@@ -18,6 +18,6 @@
 
 
 #ifdef PS2_MOUSE_ENABLE
-//#define PS2_MOUSE_SCROLL_BTN_MASK (1<<PS2_MOUSE_BTN_RIGHT)   // using the right mouse button for scrolling (other buttons can be configured)
-//#define PS2_MOUSE_SCROLL_BTN_SEND 500
+#define PS2_MOUSE_SCROLL_BTN_MASK 0x05
+#define PS2_MOUSE_SCROLL_BTN_SEND 500
 #endif

@@ -1,2 +1,2 @@
-#PS2_ENABLE = yes
-#PS2_DRIVER = interrupt
+PS2_ENABLE = yes
+PS2_DRIVER = interrupt

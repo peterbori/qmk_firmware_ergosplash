@@ -295,6 +295,8 @@ static inline void ps2_mouse_scroll_button_task(report_mouse_t *mouse_report) {
             mouse_report->v = -mouse_report->v;
 #endif
         }
+		
+		RELEASE_SCROLL_BUTTONS;
     } else if (0 == (PS2_MOUSE_SCROLL_BTN_MASK & mouse_report->buttons)) {
         // None of the scroll buttons are pressed
 
@@ -309,5 +311,5 @@ static inline void ps2_mouse_scroll_button_task(report_mouse_t *mouse_report) {
         scroll_state = SCROLL_NONE;
     }
 
-    RELEASE_SCROLL_BUTTONS;
+    //RELEASE_SCROLL_BUTTONS;
 }
