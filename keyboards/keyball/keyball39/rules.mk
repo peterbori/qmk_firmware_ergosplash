@@ -9,7 +9,7 @@ LTO_ENABLE = yes
 
 # Build Options
 BOOTMAGIC_ENABLE = no       # Enable Bootmagic Lite
-EXTRAKEY_ENABLE = no        # Audio control and System control
+EXTRAKEY_ENABLE = yes       # Audio control and System control
 CONSOLE_ENABLE = no         # Console for debug
 COMMAND_ENABLE = no         # Commands for debug and configuration
 NKRO_ENABLE = no            # Enable N-Key Rollover
@@ -26,7 +26,7 @@ SRC += drivers/pmw3360/pmw3360.c
 QUANTUM_LIB_SRC += spi_master.c # Optical sensor use SPI to communicate
 
 # This is unnecessary for processing KC_MS_BTN*.
-MOUSEKEY_ENABLE = no
+MOUSEKEY_ENABLE = yes
 
 # Enabled only one of RGBLIGHT and RGB_MATRIX if necessary.
 RGBLIGHT_ENABLE = no        # Enable RGBLIGHT
