@@ -56,10 +56,8 @@ enum layers {
 
 //********* NAV *************
 // Left-hand home row mods
-#define ALT_BT2   LALT_T(KC_BTN2)
-#define CTL_BT3   LCTL_T(KC_BTN3)
-#define SFT_BT1   LSFT_T(KC_BTN1)
-#define S_BTN1    S(KC_BTN1)
+#define LA_BTN1    LALT(KC_BTN1)
+#define SH_BTN1    S(KC_BTN1)
 
 //********* FUNC *************
 // Left-hand home row mods
@@ -73,6 +71,10 @@ enum layers {
 #define CTL_F8   RCTL_T(KC_F8)
 #define ALT_F9   LALT_T(KC_F9)
 #define GUI_F10   RGUI_T(KC_F10)
+
+//********* SYMB *************
+#define CT_LPRN LCTL_T(HU_LPRN)
+#define CT_RCBR RCTL_T(HU_RCBR)
 
 //******** NUMBERS **********
 // Left-hand home row mods
@@ -169,9 +171,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  *                                             `-------------'                          `-------------'
 //  */
     [_NAV] = LAYOUT(
-               _______, KC_BTN2, KC_BTN3, DBLCLK , _______,                                        KC_HOME, KC_PGDN, KC_PGUP, KC_END , _______,
-               _______, ALT_BT2, CTL_BT3, SFT_BT1, _______,                                        KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_ESC ,
-               _______, KC_BTN2, KC_BTN3, S_BTN1 , _______,                                        _______, KC_WH_D, KC_WH_U, _______, _______,
+               _______, KC_BTN2, KC_BTN3, DBLCLK , SH_BTN1,                                        KC_HOME, KC_PGDN, KC_PGUP, KC_END , _______,
+               _______, KC_BTN2, KC_BTN3, KC_BTN1, LA_BTN1,                                        KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_ESC ,
+               _______, KC_LALT, KC_LCTL, KC_LSFT, _______,                                        _______, KC_WH_D, KC_WH_U, _______, _______,
                _______, _______, _______, _______, _______, _______,                       KC_ENT , KC_BACKSPACE, _______
     ),
 // /*
@@ -203,13 +205,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  * Symbol layer
 //  *
 //  *                 ,----------------------------------.                                               ,----------------------------------.
-//  *                 |   \  |   |  |  <   |   >  |      |                                               |      |   [  |   ]  |      |      |      
+//  *                 |   \  |   |  |  <   |   >  |      |                                               |      |  €   |  (   |  )   |      |      
 //  *                 |      |      |      |      |      |                                               |      |      |      |      |      |      
 //  *                 |------+------+------+------+------|                                               |------+------+------+------+------|
-//  *                 |   \  |      |  (   |   )  |   $  |                                               |   €  |   {  |   }  |  -   |      |
+//  *                 |   \  |      |      |  [   |  ]   |                                               |      |      |      |  -   |  $   |
 //  *                 |      |      |      |      |      |                                               |      |      |      |      |      |
 //  *                 |------+------+------+------+------|                                               |------+------+------+------+------|
-//  *                 |      |   #  |   &  |   @  |      |                                               |      |      |   ;  |  _   |  *   |
+//  *                 |      |   #  |   &  |   @  |   {  |                                               |   }  |      |  ;   |  _   |  *   |
 //  *                 |      |      |      |      |      |                                               |      |      |      |      |      |
 //  *                 `---------------------------+------+------.                                 ,------+------+---------------------------'
 //  *                                             |      |      |                                 |      |      |
@@ -218,9 +220,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  */
 
      [_SYMB] = LAYOUT(
-                HU_BSLS, HU_PIPE, HU_LABK, HU_RABK, _______,                                        _______, HU_LBRC, HU_RBRC, _______, _______,
-                HU_BSLS, _______, HU_LPRN, HU_RPRN, HU_DLR ,                                        HU_EURO, HU_LCBR, HU_RCBR, HU_MINS, _______,
-                _______, HU_HASH, HU_AMPR, HU_AT  , _______,                                        _______, _______, HU_SCLN, HU_UNDS, HU_ASTR,
+                HU_BSLS, HU_PIPE, HU_LABK, HU_RABK, _______,                                        _______, HU_EURO, HU_LPRN, HU_RPRN, _______,
+                HU_BSLS, _______, _______, HU_LBRC, HU_RBRC,                                        _______, _______, _______, HU_MINS, HU_DLR ,
+                _______, HU_HASH, HU_AMPR, HU_AT  , HU_LCBR,                                        HU_RCBR, _______, HU_SCLN, HU_UNDS, HU_ASTR,
                 _______, _______, _______, _______, KC_SPC , KC_TAB,                       KC_ENT , _______, _______
      ),
 	 
