@@ -49,7 +49,11 @@ enum layers {
 #define SFT_F7   RSFT_T(KC_F7)
 #define CTL_F8   RCTL_T(KC_F8)
 #define ALT_F9   LALT_T(KC_F9)
-#define GUI_F10   RGUI_T(KC_F10)
+#define GUI_F10  RGUI_T(KC_F10)
+
+//********* SYMB *************
+#define CT_LPRN LCTL_T(HU_LPRN)
+#define CT_RCBR RCTL_T(HU_RCBR)
 
 //******** NUMBERS **********
 // Left-hand home row mods
@@ -65,11 +69,11 @@ enum layers {
 #define GUI_0    RGUI_T(HU_0)
 
 // Thumbcluster
-#define TAB_FUN   LT(FUN, KC_TAB)
+#define TAB_SYM   LT(SYMB, KC_TAB)
 #define SPC_NAV   LT(NAV, KC_SPC)
 #define SPC_HUN   LT(HUN, KC_SPC)
-#define BSPC_SYMB LT(SYMB, KC_BACKSPACE)
-#define ENT_NUM   LT(NUM, KC_ENT)
+#define BSPC_HUN  LT(HUN, KC_BACKSPACE)
+#define DEL_NUM   LT(NUM, KC_DEL)
 
 // Shortcuts
 #define UC_COPY LCTL(KC_C)
@@ -78,7 +82,7 @@ enum layers {
 #define UC_OSFT OSM(MOD_LSFT)
 
 const key_override_t kcbkspc_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BACKSPACE,  KC_DEL);   // backspace
-const key_override_t kcbkspc2_key_override = ko_make_basic(MOD_MASK_SHIFT, BSPC_SYMB,  KC_DEL);   // backspace
+const key_override_t kcbkspc2_key_override = ko_make_basic(MOD_MASK_SHIFT, BSPC_HUN,  KC_DEL);   // backspace
 
 const key_override_t** key_overrides = (const key_override_t*[]){
 	&kcbkspc_key_override,
@@ -117,15 +121,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  *                 |   Z  |   X  |   C  |   V  |   B  |                                               |   N  |   M  |  , < |  . > |  Q   |
 //  *                 |      |      |      |      |      |                                               |      |      |      |      |      |
 //  *                 `---------------------------+------+------.                                 ,------+------+---------------------------'
-//  *                                             | Space| TAB  |                                 |Enter |BckSpc|
-//  *                                             | NAVR | FUN  |                                 | NUM  |SYMB  |
-//  *                                             `-------------'                                 `-------------'
+//  *                                      |      | Space| TAB  |                                 | DEL  |BckSpc|
+//  *                                      | SYMB | NAVR | FUN  |                                 | NUM  | HUN  |
+//  *                                      `--------------------'                                 `-------------'
 //  */
     [_BASE] = LAYOUT(
                KC_Q   , RALT_W , KC_E   , KC_R   , KC_T   ,                                        KC_Y   , KC_U   , KC_I   , RALT_O , KC_P,
                GUI_A  , ALT_S  , CTL_D  , SFT_F  , KC_G   ,                                        KC_H   , SFT_J  , CTL_K  , ALT_L  , GUI_P,
                KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                                        KC_N   , KC_M   , KC_COMM, KC_DOT , KC_Q,
-                                                   SPC_NAV, TAB_FUN, SPC_HUN,             ENT_NUM, BSPC_SYMB
+				                          SPC_NAV, TAB_SYM, FUN    ,                      DEL_NUM, BSPC_HUN
     ),
 
 // /*
@@ -141,9 +145,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  *                 |      |      |      |      |      |                                               |      | WH_D | WH_U |      |      |
 //  *                 |      |      |      |      |      |                                               |      |      |      |      |      |
 //  *                 `---------------------------+------+------.                          ,-------------+------+---------------------------'
-//  *                                             |      |      |                          |  ENT |BckSpc
-//  *                                             |      |      |                          |      |      |
-//  *                                             `-------------'                          `-------------'
+//  *                                      |      |******|      |                          |  ENT |BckSpc
+//  *                                      |      |******|      |                          |      |      |
+//  *                                      `--------------------'                          `-------------'
 //  */
     [_NAV] = LAYOUT(
                _______, KC_BTN2, KC_BTN3, DBLCLK , SH_BTN1,                                        KC_HOME, KC_PGDN, KC_PGUP, KC_END , _______,
@@ -151,7 +155,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                _______, KC_LALT, KC_LCTL, KC_LSFT, _______,                                        _______, KC_WH_D, KC_WH_U, _______, _______,
                                           _______, _______, _______,                       KC_ENT , KC_BACKSPACE
     ),
-
 // /*
 //  * Layer Function
 //  *
@@ -165,9 +168,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  *                 |      |      | F11  | F12  |      |                                               | Play |M Prev|M Next|      |      |
 //  *                 |      |      |      |      |      |                                               |      |      |      |      |      |
 //  *                 `---------------------------+------+------.                                 ,------+------+---------------------------'
-//  *                                             |      |      |                                 |      |      |
-//  *                                             |      |      |                                 |      |      |
-//  *                                             `-------------'                                 `-------------'
+//  *                                      |******|      |      |                                 |      |      |
+//  *                                      |******|      |      |                                 |      |      |
+//  *                                      `--------------------'                                 `-------------'
 //  */
      [_FUN] = LAYOUT(
                 _______, _______, _______, KC_PSCR, _______,                                        KC_MUTE, KC_VOLD, KC_VOLU, _______, _______,
@@ -190,20 +193,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  *                 |      |   #  |   &  |   @  |   {  |                                               |   }  |      |  ;   |  _   |  *   |
 //  *                 |      |      |      |      |      |                                               |      |      |      |      |      |
 //  *                 `---------------------------+------+------.                                 ,------+------+---------------------------'
-//  *                                             |      |      |                                 |      |      |
-//  *                                             |      |      |                                 |      |      |
-//  *                                             `-------------'                                 `-------------'
+//  *                                      |      |      |******|                                 |      |      |
+//  *                                      |      |      |******|                                 |      |      |
+//  *                                      `--------------------'                                 `-------------'
 //  */
 
      [_SYMB] = LAYOUT(
                 HU_BSLS, HU_PIPE, HU_LABK, HU_RABK, _______,                                        _______, HU_EURO, HU_LPRN, HU_RPRN, _______,
                 HU_BSLS, _______, _______, HU_LBRC, HU_RBRC,                                        _______, _______, _______, HU_MINS, HU_DLR ,
                 _______, HU_HASH, HU_AMPR, HU_AT  , HU_LCBR,                                        HU_RCBR, _______, HU_SCLN, HU_UNDS, HU_ASTR,
-                                           _______, KC_SPC , KC_TAB,                       KC_ENT , _______
+                                           KC_SPC , _______, _______,                       _______ , _______
      ),
 	 
 // /*
-//  * Number Layer (Right)
+//  * Number Layer
 //  *
 //  *                 ,----------------------------------.                                               ,----------------------------------.
 //  *                 |   ~  |   ˇ  |   ^  |   ˘  |  °   |                                               |   ˛  |   `  |  ˙   |  ´   |      |      
@@ -215,38 +218,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  *                 |   '  |   "  |   +  |   !  |  %   |                                               |   /  |   =  |   (  |  )   |  §   |
 //  *                 |      |      |      |      |      |                                               |      |      |      |      |      |
 //  *                 `---------------------------+------+------.                                 ,------+------+---------------------------'
-//  *                                             |      |      |                                 |      |      |
-//  *                                             |      |      |                                 |      |      |
-//  *                                             `-------------'                                 `-------------'
+//  *                                      |      |      |      |                                 |******|      |
+//  *                                      |      |      |      |                                 |******|      |
+//  *                                      `--------------------'                                 `-------------'
 //  */
     [_NUM] = LAYOUT(
                HU_TILD, HU_CARN, HU_CIRC, HU_BREV, HU_RNGA,                                        HU_OGON, HU_GRV , HU_DOTA, HU_ACUT, _______,
                GUI_1  , ALT_2  , CTL_3  , SFT_4  , HU_5   ,                                        HU_6,    SFT_7  , CTL_8  , ALT_9  , GUI_0  ,
                HU_QUOT, HU_DQUO, HU_PLUS, HU_EXLM, HU_PERC,                                        HU_SLSH, HU_EQL , HU_LPRN, HU_RPRN, HU_SECT,
-                                                   KC_SPC , KC_TAB, _______,             _______ , KC_BACKSPACE
+                                          KC_SPC , KC_TAB, _______,                     _______ , KC_BACKSPACE
     ),
 
 // /*
-//  * Number Layer (Right)
+//  * Hungarian Layer
 //  *
 //  *                 ,----------------------------------.                                               ,----------------------------------.
-//  *                 |      |      |      |      |      |                                               |      |  Ü   |  Í   |  Ö   |      |      
+//  *                 |      |  Ó   |  É   |  Ú   |      |                                               |      |      |      |      |      |      
 //  *                 |      |      |      |      |      |                                               |      |      |      |      |      |      
 //  *                 |------+------+------+------+------|                                               |------+------+------+------+------|
-//  *                 |      |      |      |      |      |                                               |      |  Ú   |  É   |  Ó   |  Á   |
+//  *                 |  Á   |  Ö   |  Í   |  Ü   |      |                                               |      |      |      |      |      |
 //  *                 |      |      |      |      |      |                                               |      |      |      |      |      |
 //  *                 |------+------+------+------+------|                                               |------+------+------+------+------|
-//  *                 |      |      |      |      |      |                                               |      |  Ű   |      |  Ő   |      |
+//  *                 |      |  Ő   |      |  Ű   |      |                                               |      |      |      |      |      |
 //  *                 |      |      |      |      |      |                                               |      |      |      |      |      |
 //  *                 `---------------------------+------+------.                                 ,------+------+---------------------------'
-//  *                                             |      |      |                                 | Enter|      |
-//  *                                             |      |      |                                 |      |      |
-//  *                                             `-------------'                                 `-------------'
+//  *                                      |      |      |      |                                 |      |******|
+//  *                                      |      |      |      |                                 |      |******|
+//  *                                      `--------------------'                                 `-------------'
 //  */
     [_HUN] = LAYOUT(
-               _______, _______, _______, _______, _______,                                        _______, HU_UDIA, HU_IACU, HU_ODIA, _______,
-               _______, _______, _______, _______, _______,                                        _______, HU_UACU, HU_EACU, HU_OACU, HU_AACU,
-               _______, _______, _______, _______, _______,                                        _______, HU_UDAC, _______, HU_ODAC, _______,
+               _______, HU_OACU, HU_EACU, HU_UACU, _______,                                        _______, _______, _______, _______, _______,
+               HU_AACU, HU_ODIA, HU_IACU, HU_UDIA, _______,                                        _______, _______, _______, _______, _______,
+               _______, HU_ODAC, _______, HU_UDAC, _______,                                        _______, _______, _______, _______, _______,
                                           _______, _______, _______,                     _______ , _______
     ),
 };
