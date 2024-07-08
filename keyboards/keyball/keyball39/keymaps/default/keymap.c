@@ -94,7 +94,6 @@ enum layers {
 #define SPC_NAV   LT(NAV, KC_SPC)
 #define SPC_HUN   LT(HUN, KC_SPC)
 #define BSPC_HUN  LT(HUN, KC_BACKSPACE)
-#define DEL_NUM   LT(NUM, KC_DEL)
 
 // Shortcuts
 #define UC_COPY LCTL(KC_C)
@@ -142,7 +141,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  *                 |   Z  |   X  |   C  |   V  |   B  |                                               |   N  |   M  |  , < |  . > |  Q   |
 //  *                 |      |      |      |      |      |                                               |      |      |      |      |      |
 //  *                 `---------------------------+------+------.                                 ,------+------+---------------------------'
-//  *                                      |      | Space| TAB  |                                 | DEL  |BckSpc|
+//  *                                      |      | Space| TAB  |                                 |      |BckSpc|
 //  *                                      | SYMB | NAVR | FUN  |                                 | NUM  | HUN  |
 //  *                                      `--------------------'                                 `-------------'
 //  */
@@ -150,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                KC_Q   , RALT_W , KC_E   , KC_R   , KC_T   ,                                        KC_Y   , KC_U   , KC_I   , RALT_O , KC_P,
                GUI_A  , ALT_S  , CTL_D  , SFT_F  , KC_G   ,                                        KC_H   , SFT_J  , CTL_K  , ALT_L  , GUI_P,
                KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                                        KC_N   , KC_M   , KC_COMM, KC_DOT , KC_Q,
-               _______, _______, _______, FUN    , SPC_NAV, TAB_SYM,                      DEL_NUM, BSPC_HUN, QK_REBOOT
+               _______, _______, _______, FUN    , SPC_NAV, TAB_SYM,                      NUM    , BSPC_HUN, QK_REBOOT
     ),
 
 // /*
@@ -278,7 +277,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     // Auto enable scroll mode when the highest layer is 3
-    keyball_set_scroll_mode(get_highest_layer(state) == 3);
+    //keyball_set_scroll_mode(get_highest_layer(state) == 3);
     return state;
 }
 
