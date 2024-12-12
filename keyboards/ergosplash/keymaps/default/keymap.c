@@ -71,9 +71,7 @@ enum layers {
 // Thumbcluster
 #define TAB_SYM   LT(SYMB, KC_TAB)
 #define SPC_NAV   LT(NAV, KC_SPC)
-#define SPC_HUN   LT(HUN, KC_SPC)
 #define BSPC_HUN  LT(HUN, KC_BACKSPACE)
-#define DEL_NUM   LT(NUM, KC_DEL)
 
 // Shortcuts
 #define UC_COPY LCTL(KC_C)
@@ -121,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  *                 |   Z  |   X  |   C  |   V  |   B  |                                               |   N  |   M  |  , < |  . > |  Q   |
 //  *                 |      |      |      |      |      |                                               |      |      |      |      |      |
 //  *                 `---------------------------+------+------.                                 ,------+------+---------------------------'
-//  *                                      |      | Space| TAB  |                                 | DEL  |BckSpc|
+//  *                                      |      | Space| TAB  |                                 |      |BckSpc|
 //  *                                      | SYMB | NAVR | FUN  |                                 | NUM  | HUN  |
 //  *                                      `--------------------'                                 `-------------'
 //  */
@@ -129,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                KC_Q   , RALT_W , KC_E   , KC_R   , KC_T   ,                                        KC_Y   , KC_U   , KC_I   , RALT_O , KC_P,
                GUI_A  , ALT_S  , CTL_D  , SFT_F  , KC_G   ,                                        KC_H   , SFT_J  , CTL_K  , ALT_L  , GUI_P,
                KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                                        KC_N   , KC_M   , KC_COMM, KC_DOT , KC_Q,
-				                          SPC_NAV, TAB_SYM, FUN    ,                      DEL_NUM, BSPC_HUN
+				                          SPC_NAV, TAB_SYM, FUN    ,                          NUM, BSPC_HUN
     ),
 
 // /*
@@ -264,6 +262,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case GUI_1:
         case GUI_0:
             return TAPPING_TERM + 150;
+        case TAB_SYM:
+        case SPC_NAV:
+        case BSPC_HUN:
+			return 150;
         default:
             return TAPPING_TERM;
     }

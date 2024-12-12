@@ -14,7 +14,12 @@
 #define MASTER_RIGHT
 //#define SPLIT_HAND_PIN B1
 #define SPLIT_USB_DETECT
-#define SPLIT_USB_TIMEOUT 2500
+//#define SPLIT_USB_TIMEOUT 2500
+
+// If your PC does not recognize Keyball, try setting this macro. This macro
+// increases the firmware size by 200 bytes, so it is disabled by default, but
+// it has been reported to work well in such cases.
+#define SPLIT_WATCHDOG_ENABLE 	
 
 
 #ifdef PS2_MOUSE_ENABLE
