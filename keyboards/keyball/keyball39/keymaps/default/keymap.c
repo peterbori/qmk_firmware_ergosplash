@@ -140,16 +140,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  *                 |------+------+------+------+------|                                               |------+------+------+------+------|
 //  *                 |   Z  |   X  |   C  |   V  |   B  |                                               |   N  |   M  |  , < |  . > |  Q   |
 //  *                 |      |      |      |      |      |                                               |      |      |      |      |      |
-//  *                 `---------------------------+------+------.                                 ,------+------+---------------------------'
-//  *                                      |      | Space| TAB  |                                 |      |BckSpc|
-//  *                                      | SYMB | NAVR | FUN  |                                 | NUM  | HUN  |
-//  *                                      `--------------------'                                 `-------------'
+//  *                 |---------------------------+------+------.                                 ,------+------+---------------------------'
+//  *                 | Mouse| Mouse| Mouse|      | Space| TAB  |                                 |      |BckSpc|
+//  *                 | Right|Middle| Left | SYMB | NAVR | FUN  |                                 | NUM  | HUN  |
+//  *                 `-----------------------------------------'                                 `-------------'
 //  */
     [_BASE] = LAYOUT(
                KC_Q   , RALT_W , KC_E   , KC_R   , KC_T   ,                                        KC_Y   , KC_U   , KC_I   , RALT_O , KC_P,
                GUI_A  , ALT_S  , CTL_D  , SFT_F  , KC_G   ,                                        KC_H   , SFT_J  , CTL_K  , ALT_L  , GUI_P,
                KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                                        KC_N   , KC_M   , KC_COMM, KC_DOT , KC_Q,
-               _______, _______, _______, FUN    , SPC_NAV, TAB_SYM,                      NUM    , BSPC_HUN, QK_REBOOT
+               KC_BTN2, KC_BTN3, KC_BTN1, FUN    , SPC_NAV, TAB_SYM,                      NUM    , BSPC_HUN, QK_REBOOT
     ),
 
 // /*
